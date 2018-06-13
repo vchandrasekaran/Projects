@@ -1,0 +1,9 @@
+#!/bin/bash
+
+echo "Preparing to install MySql"
+apt-get install debconf-utils -y 
+debconf-set-selections <<< "mysql-server mysql-server/root_password password password"
+debconf-set-selections <<< "mysql-server mysql-server/root_password_again password password"
+
+echo "Installing MySQL now"
+apt-get install mysql-server -y 
